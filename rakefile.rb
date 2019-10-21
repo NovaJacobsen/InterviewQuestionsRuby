@@ -1,6 +1,6 @@
 begin
   require 'rspec/core/rake_task'
-  1.times do |n|
+  2.times do |n|
     desc "Run test for exercise #{n}"
     RSpec::Core::RakeTask.new(:"exercise#{n}") do |t|
       t.pattern = Dir.glob "spec/exercise#{n}_spec.rb"

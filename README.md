@@ -47,7 +47,7 @@ Successfully run the default rake task by issuing the command `rake`
 It should be obvious from the console output wheter the command was a success
 
 ### 1: Who broke the password validation?!
-After you get set up a colleague comes up to you.
+After you get set up a tester comes up to you.
 
 He is clearly nervous and saying that a bug was found in UAT.
 Apparently passwords are not being validated correctly, which he knew about,
@@ -55,8 +55,9 @@ but the tests passed at the time they made the pull request and they were in
 a hurry.
 
 Your new friend shows you the bug the customer has created in the ticket system,
-and the spec file for the Password class. A tester has already added an ignored
-test with the password the user tried to validate getting a false positive.
+and the spec file for the Password class. The tester has already added an
+ignored test with the password the user tried to validate getting a false
+positive.
 
 #### Your task:
 Fix the Password class (exercise1/password.rb) such that all examples from
@@ -76,6 +77,32 @@ breaking.
  * Consider different approaches to this problem and discuss their advantages.
  * Try making changes to the code in a way where you never have more than 1
    failing or ignored test
- * make the test more robust against implementations like the original code
+ * Make the test more robust against implementations like the original code
  * Consider how the test actually runs the methods :initialize and :valid?
    If we renamed the method valid? how do we fix the test
+
+### 2: Make it go faster
+After merging your first pull request and heroicly saving the UAT, a Business
+Analyst calls for your attention.
+
+"We have a big issue. This is the most important thing in this sprint" they say.
+
+The BA tells you about a performance problem, where a large number of video
+files are being sorted by length. They also point you the team's ops guy, who
+explains the specifics. A benchmark shows that almost all of the time
+is spent in third party code calculating the length of the video. This is code
+you cannot change in any way, and deals with bit rates, resolution and all
+kinds of weird low level magic that frakly you dont have the time or the
+interest to sit down and learn right now.
+
+Luckily for you the Ops guy has made a test using a mocked file class that you
+can use for this task, including a set time you need to get under for the
+performance SLA to be reached.
+
+#### Your task:
+Optimize the script `exercise2/file_sorter.rb`
+such that it can run fast enough to satisfy the test `spec/exercise2_spec.rb`
+
+#### Bonus task:
+ * The current test is also extremely slow. Is there a better way to test this?
+ * What is the meanning of line 8-9 in `exercise2/filesorter.rb`
