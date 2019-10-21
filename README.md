@@ -88,7 +88,7 @@ Analyst calls for your attention.
 "We have a big issue. This is the most important thing in this sprint" they say.
 
 The BA tells you about a performance problem, where a large number of video
-files are being sorted by length. They also point you the team's ops guy, who
+files are being sorted by length. They also point you the team's Ops guy, who
 explains the specifics. A benchmark shows that almost all of the time
 is spent in third party code calculating the length of the video. This is code
 you cannot change in any way, and deals with bit rates, resolution and all
@@ -103,6 +103,11 @@ performance SLA to be reached.
 Optimize the script `exercise2/file_sorter.rb`
 such that it can run fast enough to satisfy the test `spec/exercise2_spec.rb`
 
-#### Bonus task:
+#### Bonus info:
+Ruby actually has a build in way to optimize this exact problem.
+If you use it, please think about how it achieves the faster time compared to
+the naïve code in the exercise
+
+#### Bonus points:
  * The current test is also extremely slow. Is there a better way to test this?
  * What is the meanning of line 8-9 in `exercise2/filesorter.rb`
