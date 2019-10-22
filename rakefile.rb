@@ -1,10 +1,20 @@
 begin
   require 'rspec/core/rake_task'
-  2.times do |n|
-    desc "Run test for exercise #{n}"
-    RSpec::Core::RakeTask.new(:"exercise#{n}") do |t|
-      t.pattern = Dir.glob "spec/exercise#{n}_spec.rb"
-    end
+  require 'open3'
+
+  desc 'Run test for exercise 1'
+  RSpec::Core::RakeTask.new(:exercise1) do |t|
+    t.pattern = Dir.glob "spec/exercise1_spec.rb"
+  end
+
+  desc 'Run test for exercise 2'
+  RSpec::Core::RakeTask.new(:exercise2) do |t|
+    t.pattern = Dir.glob "spec/exercise2_spec.rb"
+  end
+
+  desc 'Run test for exercise 3'
+  task :exercise3 do
+    system('cucumber', chdir: 'exercise3')
   end
 rescue LoadError
   raise 'Looks like RSpec was not properly installed. Did you forget to run `bundle`?'

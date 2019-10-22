@@ -111,3 +111,49 @@ the naïve code in the exercise
 #### Bonus points:
  * The current test is also extremely slow. Is there a better way to test this?
  * What is the meanning of line 8-9 in `exercise2/filesorter.rb`
+
+### 3: A Watir example:
+We break the old format to make an exercise with a WATIR project.
+
+In `exercise3/` you will see a small WATIR & cucumber project.
+Take a look around.
+
+You are not expected to understand everything, but the most important parts are
+ * The `.feature` files include a Gherkin definition of the feature under test
+ * The `step_definitions` translate the Gherkin into concrete actions and
+ * The `pages` contain all interaction with whatever site is under test
+
+You can run the project either by:
+ * Issuing the `rake exercise3` rake task from anywhere in this repository
+ * Issuing the `cucumber` command from the `exercise3` folder
+
+#### Your task:
+The project tests a few features of the Google search. You can see the scenarios
+under test in `exercise3/features/search.feature`
+One of them is marked as work in progress. Remove the tag and implement a test
+for this scenario. You may want to take a look at the first two scenarios for
+inspiration.
+
+#### Bonus info:
+Cucumber can generate snippets for your step file. If you run a scenario that
+is missing steps the scenario will be reported as status `undefined` and
+the console output will include cucumbers best guess at a cucumber expression
+for those steps
+
+Also if you are having trouble identifying DOM elements, remember that you
+can always call `:flash` on an element locator to make the DOM element blink
+
+#### Bonus points:
+Consider the page object pattern seen in this project. An object is made for
+each page and contains all behaviour and accessing data from that page.
+
+Consider then testing a [Single Page Application](https://en.wikipedia.org/wiki/Single-page_application)
+where a lot of behaviour is associated with one page. Keeping all of that
+behaviour in a single object can easily create a [God Object](https://en.wikipedia.org/wiki/God_object)
+which has way too many methods to keep track of.
+
+What concrete steps could be taken to break apart such an object?
+
+Could steps be taken on our google search page object right now? - if so try
+taking such measures now, even though the example is still an easily managable
+size
